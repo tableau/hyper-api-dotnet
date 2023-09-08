@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    Specification for platform-specific packages which contain actual binaries. These packages
+    may be installed on their own; or they can be installed as dependencies of the umbrella package.
+-->
+<package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+    <metadata minClientVersion="4.0">
+        <!-- Unique identifier of the package -->
+        <id>@HAPI_NUGET_ID@</id>
+
+        <!-- The package version number that is used when resolving dependencies -->
+        <version>@HAPI_DOTNET_NUGET_VERSION@</version>
+
+        <!-- Authors contain text that appears directly at nuget.org -->
+        <authors>@HAPI_PACKAGE_AUTHOR@</authors>
+
+        <!--
+            Owners are typically nuget.org identities that allow gallery
+            users to easily find other packages by the same owners.
+        -->
+        <owners>@HAPI_NUGET_OWNERS@</owners>
+
+        <!-- Project URL provides a link for nuget.org gallery -->
+        <projectUrl>@HAPI_NUGET_PROJECT_URL@</projectUrl>
+
+        <!-- License information is displayed on the nuget.org gallery -->
+        <license type="file">LICENSE.txt</license>
+
+        <!--
+            If true, this value prompts the user to accept the license when
+            installing the package.
+        -->
+        <requireLicenseAcceptance>false</requireLicenseAcceptance>
+
+        <!-- Any details about this particular release -->
+        <releaseNotes>@HAPI_RELEASE_NOTES_URL@</releaseNotes>
+
+        <!--
+            The description can be used in package manager UI. Note that the
+            nuget.org gallery uses information you add in the portal.
+        -->
+        <description><![CDATA[@HAPI_PLATFORM_NUGET_DESCRIPTION@]]></description>
+
+        <!-- Copyright information -->
+        <copyright><![CDATA[@HAPI_NUGET_COPYRIGHT@]]></copyright>
+
+        <!-- Tags appear at nuget.org and can be used for tag searches -->
+        <tags>@HAPI_NUGET_TAGS@</tags>
+    </metadata>
+    <files>
+        <file src="@PACKAGE_DIR@/LICENSE.txt" target="" />
+        <file src="@PACKAGE_DIR@/HYPER_API_OSS_disclosure.txt" target="" />
+        <file src="@PACKAGE_DIR@/NOTICES.txt" target="" />
+        <file src="@PACKAGE_DIR@/lib/@HAPI_DOTNET_LIB@.dll" target="lib/netstandard2.0" />
+        <file src="@PACKAGE_DIR@/lib/@HAPI_DOTNET_LIB@.pdb" target="lib/netstandard2.0" />
+        <file src="@PACKAGE_DIR@/lib/@HAPI_DOTNET_LIB@.xml" target="lib/netstandard2.0" />
+        <file src="@PACKAGE_DIR@/lib/@NATIVE_LIB@" target="runtimes/@HAPI_DOTNET_RUNTIME@/native/" />
+        @COPY_WIN_TARGETS_FILE@
+        @COPY_HYPER_FILES@
+    </files>
+</package>

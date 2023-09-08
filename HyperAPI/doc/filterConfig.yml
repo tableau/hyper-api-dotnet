@@ -1,0 +1,5 @@
+apiRules:
+- exclude:
+    uidRegex: .*\.Dispose\(System.Boolean\)$
+- exclude:
+    uidRegex: .*\.Finalize\(\)$

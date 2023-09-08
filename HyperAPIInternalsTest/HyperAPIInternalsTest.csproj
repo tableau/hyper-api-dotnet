@@ -1,0 +1,39 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>netcoreapp6.0</TargetFramework>
+    <TargetLatestRuntimePatch>true</TargetLatestRuntimePatch>
+    <AssemblyName>HyperAPIInternalsTest</AssemblyName>
+    <RootNamespace>Tableau.HyperAPI.Test</RootNamespace>
+    <StartupObject>Tableau.HyperAPI.Test.Program</StartupObject>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Include="..\HyperAPITest\DataValidator.cs" Link="DataValidator.cs" />
+    <Compile Include="..\HyperAPITest\HyperTest.cs" Link="HyperTest.cs" />
+    <Compile Include="..\HyperAPITest\Program.cs" Link="Program.cs" />
+    <Compile Include="..\HyperAPITest\TestHyperEnvironment.cs" Link="TestHyperEnvironment.cs" />
+    <Compile Include="..\HyperAPITest\TestUtil.cs" Link="TestUtil.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.0.1" />
+    <PackageReference Include="NUnit3TestAdapter" Version="3.13.0" />
+    <PackageReference Include="NUnitLite" Version="3.12.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\HyperAPI\HyperAPI.csproj" />
+  </ItemGroup>
+
+</Project>

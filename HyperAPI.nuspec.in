@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    Nuspec for the platform-independent umbrella package. It depends on the three
+    platform-specific packages defined by HyperAPI.plat.nuspec.in
+-->
+<package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+    <metadata minClientVersion="4.0">
+        <!-- Unique identifier of the package -->
+        <id>@HAPI_NUGET_ID@</id>
+
+        <!-- The package version number that is used when resolving dependencies -->
+        <version>@HAPI_DOTNET_NUGET_VERSION@</version>
+
+        <!-- Authors contain text that appears directly at nuget.org -->
+        <authors>@HAPI_PACKAGE_AUTHOR@</authors>
+
+        <!--
+            Owners are typically nuget.org identities that allow gallery
+            users to easily find other packages by the same owners.
+        -->
+        <owners>@HAPI_NUGET_OWNERS@</owners>
+
+        <!-- Project URL provides a link for nuget.org gallery -->
+        <projectUrl>@HAPI_NUGET_PROJECT_URL@</projectUrl>
+
+        <!-- License information is displayed on the nuget.org gallery -->
+        <license type="file">LICENSE.txt</license>
+
+        <!--
+            If true, this value prompts the user to accept the license when
+            installing the package.
+        -->
+        <requireLicenseAcceptance>false</requireLicenseAcceptance>
+
+        <!-- Any details about this particular release -->
+        <releaseNotes>@HAPI_RELEASE_NOTES_URL@</releaseNotes>
+
+        <!--
+            The description can be used in package manager UI. Note that the
+            nuget.org gallery uses information you add in the portal.
+        -->
+        <description><![CDATA[@HAPI_NUGET_DESCRIPTION@]]></description>
+
+        <!-- Copyright information -->
+        <copyright><![CDATA[@HAPI_NUGET_COPYRIGHT@]]></copyright>
+
+        <!-- Tags appear at nuget.org and can be used for tag searches -->
+        <tags>@HAPI_NUGET_TAGS@</tags>
+
+        <dependencies>
+            <group targetFramework="net461" >
+                <dependency id="@HAPI_NUGET_ID@.win-x64" version="@HAPI_DOTNET_NUGET_VERSION@" exclude="none" />
+            </group>
+            <group targetFramework="netcoreapp2.0" >
+                <!-- Disable "build" so runtime files aren't copied to output, that's only needed for netframework-->
+                <dependency id="@HAPI_NUGET_ID@.win-x64" version="@HAPI_DOTNET_NUGET_VERSION@" exclude="build" />
+                <dependency id="@HAPI_NUGET_ID@.linux-x64" version="@HAPI_DOTNET_NUGET_VERSION@" exclude="none" />
+                <dependency id="@HAPI_NUGET_ID@.osx-x64" version="@HAPI_DOTNET_NUGET_VERSION@" exclude="none" />
+            </group>
+        </dependencies>
+    </metadata>
+    <files>
+        <file src="@PACKAGE_DIR@/LICENSE.txt" target="" />
+        <file src="@PACKAGE_DIR@/HYPER_API_OSS_disclosure.txt" target="" />
+        <file src="@PACKAGE_DIR@/NOTICES.txt" target="" />
+        <file src="@PACKAGE_DIR@/lib/@HAPI_NUGET_ID@.dll" target="ref/netstandard2.0" />
+        <file src="@PACKAGE_DIR@/lib/@HAPI_NUGET_ID@.pdb" target="ref/netstandard2.0" />
+        <file src="@PACKAGE_DIR@/lib/@HAPI_NUGET_ID@.xml" target="ref/netstandard2.0" />
+    </files>
+</package>
